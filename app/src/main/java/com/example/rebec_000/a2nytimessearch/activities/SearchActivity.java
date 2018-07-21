@@ -2,8 +2,7 @@ package com.example.rebec_000.a2nytimessearch.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -59,7 +58,7 @@ public class SearchActivity extends AppCompatActivity {
 
         gvResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
                 Intent i = new Intent(getApplicationContext(), ArticleActivity.class);
                 Article article = articles.get(position);
@@ -76,6 +75,7 @@ public class SearchActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_search, menu);
+
         return true;
     }
 
@@ -95,14 +95,16 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void onArticleSearch(View view) {
+
         String query = etQuery.getText().toString();
 
-        //Toast.makeText(this,"searching for" + query,Toast.LENGTH_LONG);
+        Toast.makeText(this,"searching for" + query, Toast.LENGTH_LONG).show();
 
         AsyncHttpClient client= new AsyncHttpClient();
         String url ="https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
         RequestParams params= new RequestParams();
+
         params.put("api-key", "4be5f2fbfb364ea895c91d32830487b2");
         params.put("page", 0);
         params.put("q", query);
@@ -110,10 +112,12 @@ public class SearchActivity extends AppCompatActivity {
         client.get(url, params, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+
                 Log.d("DEBUG", response.toString());
                 JSONArray articleJsonResults = null;
                 try {
-                    articleJsonResults = response.getJSONObject("resonse").getJSONArray("docs");
+                    articleJsonResults = response.getJSONObject("response").getJSONArray("docs");
                     adapter.addAll(Article.fromJSONArray(articleJsonResults));
                     Log.d("DEBUG", articles.toString());
 

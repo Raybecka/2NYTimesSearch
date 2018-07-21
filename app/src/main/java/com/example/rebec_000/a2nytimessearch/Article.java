@@ -8,6 +8,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Article implements Serializable{
+
+    String webUrl;
+    String headline;
+    String thumbNail;
+
     public String getWebUrl() {
         return webUrl;
     }
@@ -20,9 +25,7 @@ public class Article implements Serializable{
         return thumbNail;
     }
 
-    String webUrl;
-    String headline;
-    String thumbNail;
+
 
 
     public Article(JSONObject jsonObject) {
@@ -34,7 +37,7 @@ public class Article implements Serializable{
 
             if (multimedia.length() > 0) {
                 JSONObject multimediaJson = multimedia.getJSONObject(0);
-                this.thumbNail = "http://nytimes.com/" + multimediaJson.getString("url");
+                this.thumbNail = "https://nytimes.com/" + multimediaJson.getString("url");
             } else {
                 this.thumbNail = "";
             }

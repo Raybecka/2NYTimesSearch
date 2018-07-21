@@ -29,7 +29,7 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article>{
         if (convertView == null){
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_article_results, parent, false);
-    }
+        }
 
         ImageView imageView = (ImageView)convertView.findViewById(R.id.ivImage);
 
@@ -46,5 +46,5 @@ public class ArticleArrayAdapter extends ArrayAdapter<Article>{
             Picasso.with(getContext()).load(thumbnail).into(imageView);
         }
         return convertView;
-}
+    }
 }

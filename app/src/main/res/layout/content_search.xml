@@ -4,11 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.SearchActivity"
     tools:showIn="@layout/activity_search">
 
@@ -17,31 +12,38 @@
         android:id="@+id/etQuery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="68dp"
-        android:ems="10"
         android:hint="@string/hint"
-        android:inputType="textPersonName"
         android:layout_marginBottom="25dp"
-        android:text="" />
+        android:text=""
+        android:ems="10"
+        android:layout_alignParentLeft="true" />
 
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/gvResults"
-        android:layout_alignTop="@+id/etQuery"
+        android:text="@string/search"
         android:onClick="onArticleSearch"
-        android:padding="10dp"
-        android:text="@string/search" />
+        android:layout_marginTop="60dp"
+        android:layout_alignParentRight="true" />
+
+    //android:layout_alignRight="@+id/gvResults"
+    //android:layout_alignTop="@+id/etQuery"
+    //android:padding="10dp"
 
     <GridView
         android:id="@+id/gvResults"
         android:layout_width="match_parent"
-        android:layout_height="418dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnSearch"
         android:layout_centerHorizontal="true"
-        android:numColumns="4" />
+        android:paddingTop="12dp"
+        android:numColumns="4"
+
+        />
+    //android:layout_alignParentBottom="true"
+
 </RelativeLayout>
